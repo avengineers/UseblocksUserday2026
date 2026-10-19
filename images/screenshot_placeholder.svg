@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#3b4a5a"/>
+  <rect x="8" y="8" width="784" height="434" fill="none" stroke="#9fb3c8" stroke-width="4" stroke-dasharray="16 12"/>
+  <text x="400" y="235" font-family="Lato, sans-serif" font-size="36" fill="#e6edf3" text-anchor="middle">Screenshot follows</text>
+</svg>

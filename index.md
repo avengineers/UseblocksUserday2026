@@ -1,6 +1,6 @@
 ## Advanced Variant Management with Sphinx-Needs
 
-One feature model for the code, the tests and the documentation
+The variant in the editor, not only in the report
 
 <hr>
 
@@ -56,7 +56,7 @@ Each speaker says who they are in one or two sentences.
 
 | Chapter | Speaker |
 |---|---|
-| The gap: documents as templates | Karsten |
+| The gap: only the build knows the variant | Karsten |
 | Declarative variants | Philip |
 | Traceability per variant | Judith |
 | Adopt it | Karsten |
@@ -65,7 +65,8 @@ Each speaker says who they are in one or two sentences.
 
 Note:
 
-(Karsten) Four parts. I start with where we left off and with the gap in the documentation.
+(Karsten) Four parts. I start with where we left off, and with the gap: only the build knows
+the variant.
 Philip shows how the documents select their content per variant without templates. Judith
 shows what that means for the traceability. I close with what it takes to adopt it.
 
@@ -82,9 +83,9 @@ flowchart TB
 </pre>
 </div>
 
-- Since 2023, one feature model configures the build, the code, the tests and the documentation
-- The report of each variant shows its traceability, after the build
-- New: the editor knows the variant and supports you while you write
+- Since 2023, one feature model configures the build, the code, the tests and the documentation <!-- .element: class="fragment" -->
+- The report of each variant shows its traceability, after the build <!-- .element: class="fragment" -->
+- New: the editor knows the variant and supports you while you write <!-- .element: class="fragment" -->
 
 Note:
 
@@ -163,9 +164,9 @@ anything is built.
 {% endif %}
 ````
 
-- A reader that does not run the template sees text, not a variant
-- The rendered lines no longer match the lines of the source
-- Only a build knows the variant
+- A reader that does not run the template sees text, not a variant <!-- .element: class="fragment" -->
+- The rendered lines no longer match the lines of the source <!-- .element: class="fragment" -->
+- Only a build knows the variant <!-- .element: class="fragment" -->
 
 Note:
 
@@ -189,9 +190,9 @@ matters.
 ````
 `````
 
-- The condition is part of the document language
-- Sphinx and ubCode evaluate the same condition on the same data
-- `{variant}` prints a value of the variant into the text
+- The condition is part of the document language <!-- .element: class="fragment" -->
+- Sphinx and ubCode evaluate the same condition on the same data <!-- .element: class="fragment" -->
+- `{variant}` prints a value of the variant into the text <!-- .element: class="fragment" -->
 
 Note:
 
@@ -243,9 +244,9 @@ if = "'components/auto_off' in var.build_config.components"
 files = ["components/auto_off/**"]
 ```
 
-- One rule per component, generated from `parts.cmake`
-- sphinx-mounts and ubCode read the same rule
-- A component that is left out has no page and no needs
+- One rule per component, generated from `parts.cmake` <!-- .element: class="fragment" -->
+- sphinx-mounts and ubCode read the same rule <!-- .element: class="fragment" -->
+- A component that is left out has no page and no needs <!-- .element: class="fragment" -->
 
 Note:
 
@@ -258,16 +259,36 @@ name of the variant. So a new variant needs no change in any document.
 
 ### The editor knows the variant
 
-![The report of Disco and of Sleep side by side](images/spled_variant_comparison.png) <!-- .element: style="max-height: 420px;" -->
+<div class="flex-container">
+<div class="half">
 
-In ubCode, the inactive blocks fade, and a left-out document shows as
-`toctree.variant_excluded`.
+![ubCode with Disco selected](images/screenshot_placeholder.svg)
+
+Disco <!-- .element: class="caption" -->
+
+</div>
+<div class="half">
+
+![ubCode with Sleep selected](images/screenshot_placeholder.svg)
+
+Sleep <!-- .element: class="caption" -->
+
+</div>
+</div>
+
+- Inactive `{if}` blocks fade, like code under a false `#if` <!-- .element: class="fragment" -->
+- The preview folds them and names the condition <!-- .element: class="fragment" -->
+- A left-out document is information, not an error <!-- .element: class="fragment" -->
 
 Note:
 
-(Philip) On the left the report of Disco, on the right the report of Sleep. Sleep has no
-blinking, so the blinking specification is not there. In ubCode you see the same in the
-editor, while you write: select a variant, and the blocks that do not apply fade.
+(Philip) The same design document in ubCode, once with Disco selected and once with Sleep.
+You select the variant with a VS Code task. ubCode fades the blocks whose condition is false,
+the way a C editor fades code under a false `#if`. The preview shows them folded, labelled
+with their condition, and the needs inside them are not in the index, exactly as in the
+Sphinx build. A document of a component that the variant does not have is reported as
+information, with the rule that removed it. You see all of this while you write, before any
+build.
 
 --
 
@@ -327,9 +348,9 @@ in the source is one line; it is wrapped here only to fit the slide.
 set(SPL_TEST_RESULTS_AS_NEEDS ON)
 ```
 
-- GoogleTest writes JUnit XML, and the build turns each test case into a need
-- Each test specification links to its results
-- `cmake --build build/Disco/test/Debug --target components_light_controller_report`
+- GoogleTest writes JUnit XML, and the build turns each test case into a need <!-- .element: class="fragment" -->
+- Each test specification links to its results <!-- .element: class="fragment" -->
+- `cmake --build build/Disco/test/Debug --target components_light_controller_report` <!-- .element: class="fragment" -->
 
 Note:
 
@@ -340,23 +361,35 @@ before the review starts.
 
 --
 
-### Covered in every variant?
+### Gaps while you write
 
-![Three rows of the traceability matrix of Sleep](images/spled_traceability_matrix.png)
+```json
+{
+  "id": "impl-implements-spec",
+  "severity": "violation",
+  "message": "Each implementation must implement a spec.",
+  "select": {"properties": {"type": {"const": "impl"}}},
+  "validate": {"local": {
+    "required": ["implements"],
+    "properties": {"implements": {"type": "array", "minItems": 1}}
+  }}
+}
+```
 
-Sleep does not select blinking, so REQ_44 has no entries, by design.
+A proposed rule for SPLED, in the schema format of Sphinx-Needs <!-- .element: class="caption" -->
 
-Next: a schema rule such as "every implementation has a test", in the editor and in CI.
+- ubCode marks the gap while you write <!-- .element: class="fragment" -->
+- The Sphinx build reports it, and CI stops <!-- .element: class="fragment" -->
+- After the build, the report still shows the matrix <!-- .element: class="fragment" -->
 
 Note:
 
-(Judith) This is the traceability matrix of the Sleep report. The requirement for blinking
-has no design and no implementation in Sleep, and that is correct. In Disco, the same row is
-full. The matrix comes out of the build for each variant. This figure was built from the
-upstream SPLED repository; the useblocks fork gets the matrix when it merges upstream.
-The next step is to make the rule
-explicit: a schema that says every implementation has a test. ubCode then marks each gap
-while you write, and CI refuses a change that opens one.
+(Judith) The traceability matrix of each variant has been in the report since last year. It
+tells you after the build that a link is missing. A schema tells you while you write. This
+rule says that every implementation implements at least one design element. Write an
+`@need` comment without a design element, and ubCode marks the line at once. The Sphinx
+build reports the same violation, so CI stops before the gap is merged. The rule is not yet
+in SPLED. It is the next step, and it uses the schema format that Sphinx-Needs already has.
 
 --
 
@@ -369,8 +402,8 @@ for each variant, kit and target:
     compare them, need by need
 ```
 
-- The allowed differences are listed in one file, `test/docs_exceptions.toml`
-- The CI job reports the build time of both readers per cell
+- The allowed differences are listed in one file, `test/docs_exceptions.toml` <!-- .element: class="fragment" -->
+- The CI job reports the build time of both readers per cell <!-- .element: class="fragment" -->
 
 Note:
 
@@ -388,19 +421,19 @@ disagrees anywhere else, the change does not merge.
 
 **Mandatory**
 
-- `ubproject.toml` with the needs model
-- No Jinja: variant data, `{if}`, generated rules
-- spl-core with the new opt-in settings
+- `ubproject.toml` with the needs model <!-- .element: class="fragment" -->
+- No Jinja: variant data, `{if}`, generated rules <!-- .element: class="fragment" -->
+- spl-core with the new opt-in settings <!-- .element: class="fragment" -->
 
 </div>
 <div class="half">
 
 **Next**
 
-- Upstream into spl-core and SPLED
-- Select the variant through CMake Tools
-- Variation points inside diagrams
-- A schema rule as a gate
+- Upstream into spl-core and SPLED <!-- .element: class="fragment" -->
+- Select the variant through CMake Tools <!-- .element: class="fragment" -->
+- Variation points inside diagrams <!-- .element: class="fragment" -->
+- A schema rule as a gate <!-- .element: class="fragment" -->
 
 </div>
 </div>

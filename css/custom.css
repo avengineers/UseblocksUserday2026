@@ -289,6 +289,12 @@ pre.code-wrapper {
     max-height: 600px;
 }
 
+/* A short line under a figure or a listing: what it shows, where it comes from. */
+.reveal .caption {
+    font-size: 0.6em;
+    margin: 0.2em 0;
+}
+
 /* A table that must stay readable from the back of the room: larger than
  * .small-table, smaller than the body text. */
 .reveal .mid-table {
