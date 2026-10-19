@@ -165,33 +165,6 @@ to that row.
 
 --
 
-### One feature model, three artifacts
-
-<div class="mermaid">
-<pre>
-flowchart LR
-    K["KConfig&lt;br/&gt;config.txt"] --> C["CMake configure"]
-    P["parts.cmake"] --> C
-    K --> V["variant_data.py"]
-    P --> V
-    C --> H["autoconf.h&lt;br/&gt;code"]
-    C --> M["autoconf.cmake&lt;br/&gt;build"]
-    V --> J["docs.json&lt;br/&gt;documentation"]
-</pre>
-</div>
-
-The same selection decides what is compiled, what is tested and what is documented.
-
-Note:
-
-(Karsten) The feature model and the selection of a variant go into the CMake configure step.
-Out come a header for the code and a CMake file for the build. That has worked for years. The
-new part is the third output: a small generator reads the same files and writes a data file
-for the documentation. It needs no compiler, so the documentation knows the variant before
-anything is built.
-
---
-
 ### Documents as templates
 
 ````markdown
