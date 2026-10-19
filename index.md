@@ -83,9 +83,8 @@ flowchart TB
 </pre>
 </div>
 
-- Since 2023, one feature model configures the build, the code, the tests and the documentation <!-- .element: class="fragment" -->
-- The report of each variant shows its traceability <!-- .element: class="fragment" -->
-- New: the editor knows the variant and supports you while you write <!-- .element: class="fragment" -->
+- Since 2023: one feature model for build, code, tests and documentation <!-- .element: class="fragment" -->
+- Traceability per variant, in the generated report <!-- .element: class="fragment" -->
 
 Note:
 
@@ -96,8 +95,7 @@ element or a test exists only in the variants that select it. We showed this at 
 2024, and Michael and Jochen showed it here last year, with the traceability from the
 requirement to the test result. The report of every variant shows that traceability. But
 you see it only after the build, in the generated report. While you write, the editor sees a
-template, not a variant. That is what changes this year: with the useblocks tools, the editor
-knows the variant, shows you what belongs to it, and supports you while you write.
+template, not a variant.
 
 --
 
@@ -127,7 +125,7 @@ Spa <!-- .element: class="caption" -->
 </div>
 </div>
 
-One repository, one trunk, three products. <!-- .element: class="fragment" -->
+One repository, one trunk, three products <!-- .element: class="fragment" -->
 
 Note:
 
@@ -178,9 +176,9 @@ to that row.
 {% endif %}
 ````
 
-- A reader that does not run the template sees text, not a variant <!-- .element: class="fragment" -->
-- The rendered lines no longer match the lines of the source <!-- .element: class="fragment" -->
-- Only a build knows the variant <!-- .element: class="fragment" -->
+- To the editor: text, not a variant <!-- .element: class="fragment" -->
+- No line mapping to the source <!-- .element: class="fragment" -->
+- Variant known only to the build <!-- .element: class="fragment" -->
 
 Note:
 
@@ -204,9 +202,9 @@ matters.
 ````
 `````
 
-- The condition is part of the document language <!-- .element: class="fragment" -->
-- Sphinx and ubCode evaluate the same condition on the same data <!-- .element: class="fragment" -->
-- `{variant}` prints a value of the variant into the text <!-- .element: class="fragment" -->
+- The condition: part of the document language <!-- .element: class="fragment" -->
+- Same condition, same data, in Sphinx and ubCode <!-- .element: class="fragment" -->
+- `{variant}`: a value of the variant in the text <!-- .element: class="fragment" -->
 
 Note:
 
@@ -259,8 +257,8 @@ files = ["components/auto_off/**"]
 ```
 
 - One rule per component, generated from `parts.cmake` <!-- .element: class="fragment" -->
-- sphinx-mounts and ubCode read the same rule <!-- .element: class="fragment" -->
-- A component that is left out has no page and no needs <!-- .element: class="fragment" -->
+- Read by sphinx-mounts and by ubCode <!-- .element: class="fragment" -->
+- Component left out: no page, no needs <!-- .element: class="fragment" -->
 
 Note:
 
@@ -290,9 +288,9 @@ Sleep <!-- .element: class="caption" -->
 </div>
 </div>
 
-- Inactive `{if}` blocks fade, like code under a false `#if` <!-- .element: class="fragment" -->
-- The preview folds them and names the condition <!-- .element: class="fragment" -->
-- A left-out document is information, not an error <!-- .element: class="fragment" -->
+- Inactive `{if}` blocks faded, like a false `#if` <!-- .element: class="fragment" -->
+- Folded in the preview, with their condition <!-- .element: class="fragment" -->
+- Left-out document: information, not an error <!-- .element: class="fragment" -->
 
 Note:
 
@@ -319,7 +317,7 @@ Removed need SWDD_LC-101
 Removed need SWDD_LC-203
 ```
 
-One changed value, no build, and the answer in seconds.
+One changed value, no build, the answer in seconds
 
 Note:
 
@@ -362,8 +360,8 @@ in the source is one line; it is wrapped here only to fit the slide.
 set(SPL_TEST_RESULTS_AS_NEEDS ON)
 ```
 
-- GoogleTest writes JUnit XML, and the build turns each test case into a need <!-- .element: class="fragment" -->
-- Each test specification links to its results <!-- .element: class="fragment" -->
+- One need per GoogleTest case, from JUnit XML <!-- .element: class="fragment" -->
+- Test specification linked to its results <!-- .element: class="fragment" -->
 - `cmake --build build/Disco/test/Debug --target components_light_controller_report` <!-- .element: class="fragment" -->
 
 Note:
@@ -392,9 +390,9 @@ before the review starts.
 
 A proposed rule for SPLED, in the schema format of Sphinx-Needs <!-- .element: class="caption" -->
 
-- ubCode marks the gap while you write <!-- .element: class="fragment" -->
-- The Sphinx build reports it, and CI stops <!-- .element: class="fragment" -->
-- After the build, the report still shows the matrix <!-- .element: class="fragment" -->
+- Gap marked in ubCode, while you write <!-- .element: class="fragment" -->
+- Same violation in the Sphinx build: CI stops <!-- .element: class="fragment" -->
+- The matrix stays in the report <!-- .element: class="fragment" -->
 
 Note:
 
@@ -416,8 +414,8 @@ for each variant, kit and target:
     compare them, need by need
 ```
 
-- The allowed differences are listed in one file, `test/docs_exceptions.toml` <!-- .element: class="fragment" -->
-- The CI job reports the build time of both readers per cell <!-- .element: class="fragment" -->
+- Allowed differences in one file: `test/docs_exceptions.toml` <!-- .element: class="fragment" -->
+- Build time of both readers, per cell, in the CI job <!-- .element: class="fragment" -->
 
 Note:
 
@@ -471,7 +469,7 @@ cd SPLed
 python tools/try_variants.py all
 ```
 
-The guide `VARIANTS.md` walks through 19 use cases.
+`VARIANTS.md`: 19 use cases, step by step
 
 Note:
 

@@ -72,6 +72,9 @@ speaker, so the speaker changes only between two columns.
 - Start a chapter with a content slide, not with an empty chapter-title slide.
 - Put a slide that can be cut last in its column. A speaker who runs out of time presses
   Right and skips the rest of the column.
+- Write a bullet as a short phrase, not as a sentence. A phrase has no full stop. Where a line
+  on a slide is a full sentence, it ends with a full stop. The speaker notes are full sentences.
+- Do not announce what is new before the chapter that shows it.
 - Make each bullet appear on its own click: end its line with
   `<!-- .element: class="fragment" -->`. On a line with inline code or a link, the Markdown
   plugin gives that class to the code or the link. The `FragmentToLine` plugin in `index.html`
