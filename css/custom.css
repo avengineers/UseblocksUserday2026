@@ -283,6 +283,22 @@ pre.code-wrapper {
     outline-offset: -2px;
 }
 
+/* reveal.js stops a code block at 400px and scrolls the rest. A listing on a
+ * slide must show in full. */
+.reveal pre code {
+    max-height: 600px;
+}
+
+/* A table that must stay readable from the back of the room: larger than
+ * .small-table, smaller than the body text. */
+.reveal .mid-table {
+    font-size: 0.65em;
+}
+
+.reveal .mid-table table {
+    margin: 0.5em auto;
+}
+
 /* Common slides of every deck: the title slide, "Who are we?",
  * "Questions?" and "Some Links". The markup is in docs/_template/index.md.
  * Change the look here, not in a deck. */
