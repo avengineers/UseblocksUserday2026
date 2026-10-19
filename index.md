@@ -151,8 +151,7 @@ anything to get the third one. Everything we show today runs on this repository.
 
 </div>
 
-No branches: the `config.txt` of a variant selects the features, its `parts.cmake` the
-components. <!-- .element: class="fragment" -->
+No branches: the `config.txt` of a variant selects the features. <!-- .element: class="fragment" -->
 
 Note:
 

@@ -72,6 +72,10 @@ speaker, so the speaker changes only between two columns.
 - Start a chapter with a content slide, not with an empty chapter-title slide.
 - Put a slide that can be cut last in its column. A speaker who runs out of time presses
   Right and skips the rest of the column.
+- Make each bullet appear on its own click: end its line with
+  `<!-- .element: class="fragment" -->`. On a line with inline code or a link, the Markdown
+  plugin gives that class to the code or the link. The `FragmentToLine` plugin in `index.html`
+  moves it to the line. Keep that plugin right after `RevealMarkdown`.
 - Keep each slide's speaker in its notes, as `(Name)` at the start.
 - Write the speaker notes in full sentences. A speaker who reads them must be able to give
   the slide.

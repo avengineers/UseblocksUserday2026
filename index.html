@@ -30,6 +30,23 @@
   <script src="reveal.js/dist/plugin/highlight.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js-mermaid-plugin@11.4.1/plugin/mermaid/mermaid.min.js"></script>
   <script>
+    // The Markdown plugin gives the class of an `.element` comment to the element in
+    // front of the comment. At the end of a line with inline code or a link, that is
+    // the code or the link, so only that part waits for the click. This plugin runs
+    // after the Markdown plugin and moves such a fragment class to its line.
+    const FragmentToLine = {
+      id: "fragment-to-line",
+      init: (deck) => {
+        const inline = ["CODE", "A", "EM", "STRONG", "SPAN"];
+        deck.getRevealElement().querySelectorAll("li > .fragment, p > .fragment").forEach((element) => {
+          if (inline.includes(element.tagName)) {
+            element.classList.remove("fragment");
+            element.parentElement.classList.add("fragment");
+          }
+        });
+      },
+    };
+
     // More info about initialization & config:
     // - https://revealjs.com/initialization/
     // - https://revealjs.com/config/
@@ -40,7 +57,9 @@
       pdfMaxPagesPerSlide: 1,
       backgroundTransition: "slide",
       // Learn about plugins: https://revealjs.com/plugins/
-      plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMermaid],
+      // FragmentToLine must come right after RevealMarkdown: it works on the slides
+      // that the Markdown plugin has made.
+      plugins: [RevealMarkdown, FragmentToLine, RevealHighlight, RevealNotes, RevealMermaid],
     });
   </script>
 </body>
