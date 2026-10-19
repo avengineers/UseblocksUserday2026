@@ -1,0 +1,16 @@
+{
+   "cSpell.language": "en,de",
+   "files.autoSave": "afterDelay",
+   "markdownlint.config": {
+      "MD022": false,
+      "MD033": false,
+      "MD034": false,
+      "MD037": false,
+      "MD041": false,
+      "MD045": false,
+      "MD049": false,
+   },
+   "editor.formatOnSave": true,
+   "files.trimTrailingWhitespace": true,
+   "evenBetterToml.formatter.trailingNewline": true
+}

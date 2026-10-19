@@ -1,0 +1,343 @@
+.fragment.blur {
+    filter: none;
+}
+
+.slide-text {
+    text-align: left;
+    font-size: 0.5em;
+}
+
+/* Copy button for code blocks */
+pre.code-wrapper {
+    position: relative;
+}
+
+.copy-code-btn {
+    position: absolute;
+    top: 4px;
+    right: 5px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    color: #ccc;
+    cursor: pointer;
+    padding: 2px 4px;
+    font-size: 0.4em;
+    line-height: 1;
+    transition: background 0.2s, color 0.2s;
+    z-index: 10;
+}
+
+.copy-code-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+}
+
+.copy-code-btn.copied {
+    color: #4caf50;
+    border-color: #4caf50;
+}
+
+.fragment.blur.visible {
+    filter: blur(5px);
+}
+
+.monospacesmall {
+    font-family: monospace;
+    font-size: 0.3em;
+}
+
+.monospace {
+    font-family: monospace;
+    font-size: 0.5em;
+}
+
+.monospacemed {
+    font-family: monospace;
+    font-size: 0.7em;
+}
+
+.monospacemed pre code {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    overflow-x: hidden !important;
+}
+
+.monospacemed pre {
+    overflow-x: hidden !important;
+}
+
+.highlighted-green {
+    color: #C3FDB8;
+}
+
+.highlighted-red {
+    color: #FDBCB4;
+}
+
+.highlighted-blue {
+    color: #c8ebf8;
+}
+
+.highlighted-red-transparent-background {
+    color: #FDBCB4;
+    background-color: rgba(101, 101, 101, 0.5);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+
+}
+
+.highlighted-yellow-transparent-background {
+    color: #FEEFA4;
+    background-color: rgba(101, 101, 101, 0.5);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+
+}
+
+.highlighted-yellow-transparent-background-small {
+    color: #FEEFA4;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    font-family: monospace;
+    font-size: 0.3em;
+}
+
+.rounded-corners {
+    border-radius: 20px;
+    align-items: center;
+}
+
+.content-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.big-container {
+    padding-right: 20px;
+    flex: 3;
+    /* the list will take 75% */
+}
+
+.small-container {
+    flex: 1;
+    /* the image will take 25% */
+    padding-left: 20px;
+}
+
+.inline-image {
+    height: 100px;
+    width: auto;
+    vertical-align: middle;
+}
+
+.red {
+    color: rgb(198, 6, 6);
+}
+
+.yellow {
+    color: rgb(198, 198, 0);
+}
+
+.green {
+    color: rgb(10, 98, 10);
+}
+
+.blue {
+    color: rgb(0, 0, 198);
+}
+
+.strike {
+    text-decoration: line-through;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.transparent {
+    opacity: 0.01;
+}
+
+.mono {
+    font-family: monospace;
+    background-color: gray;
+}
+
+.reveal .adjust-section-structure {
+    font-size: 0.5em;
+}
+
+.reveal .flex-container {
+    display: flex;
+}
+
+.reveal .flex-container .half {
+    flex: 1;
+    width: 50%;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+    text-transform: none;
+}
+
+.reveal code * {
+    font-family: monospace;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Agenda table styling (training agenda) */
+.agenda {
+    width: 100%;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+.agenda th,
+.agenda td {
+    padding: 0.25em 0.5em;
+}
+
+.agenda td:nth-child(2) {
+    white-space: nowrap;
+}
+
+.reveal .small-table {
+    font-size: 0.5em;
+    line-height: 1.2;
+}
+
+.reveal .small-table table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    margin: 0.5em 0;
+}
+
+.reveal .small-table th,
+.reveal .small-table td {
+    padding: 3px 4px;
+    border: 1px solid #ddd;
+    text-align: left;
+    vertical-align: top;
+}
+
+.reveal .small-table th {
+    background-color: rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+}
+
+/* Dark and gray break row variants */
+.agenda tr.break-dark td {
+    background: #1f1f1f;
+    color: #f2f2f2;
+}
+
+.agenda tr.break-gray td {
+    background: #3a3a3a;
+    color: #ffffff;
+}
+
+/* Slight border to separate sections */
+.agenda tr.break-dark td,
+.agenda tr.break-gray td {
+    border-top: 2px solid #555;
+    border-bottom: 2px solid #555;
+}
+
+/* Improve visibility when fragment becomes visible */
+.agenda tr.break-dark.fragment.visible td,
+.agenda tr.break-gray.fragment.visible td {
+    box-shadow: inset 0 0 0 2px #888;
+}
+
+/* Icon decorations for break types */
+.agenda tr.break-coffee td:nth-child(3)::before {
+    content: "☕ ";
+    font-size: 0.9em;
+}
+
+.agenda tr.break-lunch td:nth-child(3)::before {
+    content: "🍽️ ";
+    font-size: 0.9em;
+}
+
+.agenda tr.break-coffee td:nth-child(3),
+.agenda tr.break-lunch td:nth-child(3) {
+    white-space: nowrap;
+}
+
+/* High contrast focus (keyboard navigation in reveal) */
+.agenda tr:focus-within td {
+    outline: 2px solid #ffd343;
+    outline-offset: -2px;
+}
+
+/* Common slides of every deck: the title slide, "Who are we?",
+ * "Questions?" and "Some Links". The markup is in docs/_template/index.md.
+ * Change the look here, not in a deck. */
+.reveal .talk-event {
+    font-size: 0.8em;
+}
+
+.reveal .talk-logos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5em;
+}
+
+.reveal .talk-logos img {
+    height: 120px;
+    margin: 0;
+}
+
+/* The useblocks logo is a wordmark, much wider than it is high. */
+.reveal .talk-logos img.wordmark {
+    height: 64px;
+}
+
+.reveal .speakers {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+}
+
+/* Three speakers at 26 % and two gaps of 2em fit the slide width. */
+.reveal .speaker {
+    width: 26%;
+    text-align: center;
+}
+
+.reveal .speaker img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 20px;
+    margin: 0 0 0.3em 0;
+}
+
+.reveal .speaker p {
+    margin: 0;
+}
+
+.reveal .qr img {
+    width: 30%;
+    background: #fff;
+    padding: 12px;
+    margin: 0;
+}
+
+.reveal .deck-url {
+    font-size: 0.6em;
+}

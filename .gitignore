@@ -1,0 +1,17 @@
+/.bootstrap/
+/.idea/
+*.iml
+*.iws
+*.eml
+out/
+.DS_Store
+.svn
+log/*.log
+tmp/**
+node_modules/
+.sass-cache
+~*.pptx
+.bootstrap
+
+# DevContainer local certificates
+.devcontainer/certs/

@@ -1,0 +1,40 @@
+{
+   "version": "2.0.0",
+   "tasks": [
+      {
+         "label": "Install dependencies",
+         "type": "shell",
+         "command": ".\\build.ps1 -install",
+         "problemMatcher": []
+      },
+      {
+         "label": "Start local web server",
+         "type": "shell",
+         "command": "npm run dev",
+         "problemMatcher": [],
+         "isBackground": true
+      },
+      {
+         "label": "View slides (presentation mode)",
+         "type": "shell",
+         "command": "start http://localhost:3000/",
+         "problemMatcher": []
+      },
+      {
+         "label": "View presentation (PDF mode)",
+         "type": "shell",
+         "command": "start http://localhost:3000/?print-pdf",
+         "problemMatcher": []
+      },
+      {
+         "label": "Lint markdown files",
+         "type": "shell",
+         "command": "npm",
+         "args": [
+            "run",
+            "lint:md"
+         ],
+         "problemMatcher": []
+      }
+   ]
+}

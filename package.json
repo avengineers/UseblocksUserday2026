@@ -1,0 +1,22 @@
+{
+  "name": "useblocks-userday-2026",
+  "version": "1.0.0",
+  "description": "Slide deck of our talk at the useblocks user day 2026",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "lint:md": "markdownlint --config .markdownlint.json *.md docs/**/*.md"
+  },
+  "keywords": [
+    "presentation",
+    "reveal.js",
+    "sphinx-needs",
+    "useblocks"
+  ],
+  "author": "avengineers",
+  "license": "MIT",
+  "devDependencies": {
+    "markdownlint-cli": "^0.49.1",
+    "vite": "^7.3.1"
+  }
+}

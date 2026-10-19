@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <title>Placeholder for a speaker photo</title>
+  <rect width="200" height="200" fill="#5a6e7c"/>
+  <circle cx="100" cy="78" r="38" fill="#c9d3da"/>
+  <path d="M30 200 C30 140 60 122 100 122 C140 122 170 140 170 200 Z" fill="#c9d3da"/>
+</svg>
