@@ -50,6 +50,27 @@ Each speaker says who they are in one or two sentences.
 
 ---
 
+### Agenda
+
+<div class="mid-table">
+
+| Chapter | Speaker |
+|---|---|
+| The gap: documents as templates | Karsten |
+| Declarative variants | Philip |
+| Traceability per variant | Judith |
+| Adopt it | Karsten |
+
+</div>
+
+Note:
+
+(Karsten) Four parts. I start with where we left off and with the gap in the documentation.
+Philip shows how the documents select their content per variant without templates. Judith
+shows what that means for the traceability. I close with what it takes to adopt it.
+
+---
+
 ### Where we left off
 
 <div class="mermaid">
@@ -74,7 +95,7 @@ code and resolved by Sphinx-Needs. The documentation followed the variant too, b
 through Jinja templates. One question stayed open in both talks: how do I see that every
 requirement is covered in every variant? Today we close that gap.
 
----
+--
 
 ### SPLED in one slide
 
@@ -97,7 +118,7 @@ Sleep has a brightness knob and switches itself off. Spa adjusts its brightness 
 The `config.txt` of a variant selects the features, and its `parts.cmake` selects the
 components. Everything we show today runs on this repository.
 
----
+--
 
 ### One feature model, three artifacts
 
@@ -124,7 +145,7 @@ new part is the third output: a small generator reads the same files and writes 
 for the documentation. It needs no compiler, so the documentation knows the variant before
 anything is built.
 
----
+--
 
 ### Documents as templates
 
@@ -176,7 +197,7 @@ document language, so every reader understands it: the Sphinx build, ubCode in t
 and the ubc command line. The condition reads the features of the selected variant. Nothing
 is generated into the text, so the lines stay where they are.
 
----
+--
 
 ### The variant as data
 
@@ -208,7 +229,7 @@ variant and kit, without a compiler. It holds every feature, the ones that are o
 the list of components from `parts.cmake`. One small file names the current selection, and
 every reader follows it.
 
----
+--
 
 ### Whole components in or out
 
@@ -230,7 +251,7 @@ per component into `ubproject.variants.toml`. The Sphinx build reads it through
 sphinx-mounts, and ubCode reads it directly. The rule asks for the component, never for the
 name of the variant. So a new variant needs no change in any document.
 
----
+--
 
 ### The editor knows the variant
 
@@ -245,7 +266,7 @@ Note:
 blinking, so the blinking specification is not there. In ubCode you see the same in the
 editor, while you write: select a variant, and the blocks that do not apply fade.
 
----
+--
 
 ### What if?
 
@@ -295,7 +316,7 @@ branch: Spa. The test specification sits above the test, under the same conditio
 test itself. In Sleep and Spa, neither the test nor its specification exists. The comment
 in the source is one line; it is wrapped here only to fit the slide.
 
----
+--
 
 ### Test results are needs
 
@@ -314,7 +335,7 @@ test specification links to its results. The developer builds the report of one
 component on their own machine, before they push. That is shift-left: the evidence exists
 before the review starts.
 
----
+--
 
 ### Covered in every variant?
 
@@ -334,7 +355,7 @@ The next step is to make the rule
 explicit: a schema that says every implementation has a test. ubCode then marks each gap
 while you write, and CI refuses a change that opens one.
 
----
+--
 
 ### Two readers, one answer
 
@@ -390,7 +411,7 @@ conversion of the documents is mechanical. What comes next: the changes go upstr
 developer selects the variant where they already do it in VS Code, diagrams get their own
 variation points, and the schema rule becomes a gate.
 
----
+--
 
 ### Try it
 

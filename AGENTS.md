@@ -69,6 +69,13 @@ The demo project is [SPLED as useblocks adapted it](https://github.com/useblocks
 Take code listings from its `develop` branch, and name the file each listing comes from in
 the speaker notes.
 
+The deck has one column per chapter. The horizontal separator `---` starts a chapter, and the
+vertical separator `--` adds a slide below it. The "Agenda" slide names each chapter and its
+speaker, so the speaker changes only between two columns.
+
+- Start a chapter with a content slide, not with an empty chapter-title slide.
+- Put a slide that can be cut last in its column. A speaker who runs out of time presses
+  Right and skips the rest of the column.
 - Keep each slide's speaker in its notes, as `(Name)` at the start.
 - Write the speaker notes in full sentences. A speaker who reads them must be able to give
   the slide.
