@@ -17,7 +17,7 @@ Write every file and every commit message as if the repository were public today
 - Do not write Jira keys. A reader outside the company cannot open them.
 - Check each slide that comes from an internal deck against these rules before you add it.
 - Add a speaker's photo and profile link only when that speaker supplies them. Until then,
-  use `docs/images/speaker_placeholder.svg` and the first name without a link.
+  use `images/speaker_placeholder.svg` and the first name without a link.
 
 **Caution:** the history goes public with the files. A text that you change or delete stays
 readable in the older commits.
@@ -28,20 +28,16 @@ Before you make the repository public:
 2. Check every commit message against the rules above.
 3. Set the visibility of the repository to public.
 4. Switch on GitHub Pages for the `develop` branch and the root folder.
-5. Open `https://avengineers.github.io/UseblocksUserday2026/` and the deck.
+5. Open `https://avengineers.github.io/UseblocksUserday2026/`.
 
 ## Structure
 
 ```text
 UseblocksUserday2026/
 ├── .devcontainer/             dev container for Linux and WSL, also behind a corporate proxy
-├── index.html, index.md       landing page: links to the deck
-├── docs/
-│   ├── _template/             skeleton deck with the common slides
-│   ├── variant_management/
-│   │   ├── index.html         reveal.js entry point of the deck
-│   │   └── index.md           the slides
-│   └── images/                logos, speaker photos, QR codes, figures
+├── index.html                 reveal.js entry point of the deck
+├── index.md                   the slides
+├── images/                    logos, speaker photos, the QR code, figures
 ├── css/
 │   ├── marquardt.css          the theme
 │   └── custom.css             shared styles, including the common slides
@@ -51,9 +47,9 @@ UseblocksUserday2026/
     └── make_qr.py             makes the QR codes
 ```
 
-| Deck | Talk | Language | Speakers |
-|---|---|---|---|
-| `docs/variant_management/` | Advanced Variant Management with Sphinx-Needs | English | Judith, Karsten, Philip |
+This repository holds one deck and stays that way: "Advanced Variant Management with
+Sphinx-Needs", in English, by Judith, Karsten and Philip. Do not add a landing page or a
+second deck.
 
 ## The talk
 
@@ -85,8 +81,8 @@ speaker, so the speaker changes only between two columns.
 The deck starts with the title slide and "Who are we?". It ends with "Questions?" and
 "Some Links".
 
-- Take the markup from `docs/_template/index.md`.
-- Change the look in `css/custom.css`, section "Common slides". Do not change it in the deck.
+- Change their look in `css/custom.css`, section "The common slides". Do not change it with
+  inline styles in `index.md`.
 
 ## The theme
 
@@ -108,16 +104,16 @@ the talk, export the PDF and keep it as the fallback.
 
 ## Viewing and checking
 
-- Run `npm install` once. Then run `npm run dev`. The landing page opens at
-  `http://localhost:3000/`.
+- Run `npm install` once. Then run `npm run dev`.
 - Run `npm run lint:md` before each commit.
-- Run `uv run scripts/make_qr.py` after a change of the deck URL.
-- While the repository is private, `npm run dev` is the only way to see the deck.
+- Run `uv run scripts/make_qr.py` after a change of the deck URL. It writes `images/qr.png`.
+- While the repository is private, `npm run dev` is the only way to see the deck. It opens at
+  `http://localhost:3000/`.
 - When the repository is public, GitHub Pages serves the `develop` branch from the root
   folder, at `https://avengineers.github.io/UseblocksUserday2026/`. The QR code and the
   "Some Links" slide point there.
-- Keep the empty file `.nojekyll`. Without it, GitHub Pages does not publish folders that
-  start with `_`, such as `docs/_template/`.
+- Keep the empty file `.nojekyll`. With it, GitHub Pages serves the files as they are, without
+  a Jekyll build.
 
 ## Language
 

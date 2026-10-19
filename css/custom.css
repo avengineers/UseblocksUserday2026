@@ -299,9 +299,8 @@ pre.code-wrapper {
     margin: 0.5em auto;
 }
 
-/* Common slides of every deck: the title slide, "Who are we?",
- * "Questions?" and "Some Links". The markup is in docs/_template/index.md.
- * Change the look here, not in a deck. */
+/* The common slides: the title slide, "Who are we?", "Questions?" and
+ * "Some Links". Change their look here, not with inline styles. */
 .reveal .talk-event {
     font-size: 0.8em;
 }

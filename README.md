@@ -3,11 +3,9 @@
 The slide deck of our talk at the [useblocks user day](https://useblocks.com/company/events),
 23 October 2026 in Munich.
 
-| Talk | Slides |
-|---|---|
-| Advanced Variant Management with Sphinx-Needs | [variant_management](https://avengineers.github.io/UseblocksUserday2026/docs/variant_management/) |
-
-Add `?print-pdf` to a deck URL to get the printable version.
+The talk: "Advanced Variant Management with Sphinx-Needs".
+The slides: <https://avengineers.github.io/UseblocksUserday2026/>.
+Add `?print-pdf` to the URL to get the printable version.
 
 The talk follows two earlier ones:
 [CodeDays 2024](https://avengineers.github.io/CodeDays2024/) and
@@ -41,11 +39,11 @@ start the web server with `npm run dev`.
 | reveal.js | `reveal.js/` submodule, upstream, pinned to 6.0.2 |
 | Theme | `css/marquardt.css` |
 | Shared styles | `css/custom.css` |
-| Shared images | `docs/images/` |
-| Skeleton deck | `docs/_template/` |
+| Images | `images/` |
 | QR codes | `scripts/make_qr.py` |
 
-The rules for changing the deck are in [AGENTS.md](AGENTS.md).
+The slides are in `index.md`, and `index.html` loads them. The rules for changing the deck
+are in [AGENTS.md](AGENTS.md).
 
 ## License
 
