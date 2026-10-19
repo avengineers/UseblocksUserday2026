@@ -75,25 +75,28 @@ shows what that means for the traceability. I close with what it takes to adopt 
 
 <div class="mermaid">
 <pre>
-flowchart LR
-    FM["Feature model&lt;br/&gt;KConfig"] --> B["Build&lt;br/&gt;CMake"]
-    FM --> T["Tests&lt;br/&gt;GoogleTest"]
-    FM -. "Jinja templates" .-> D["Documentation&lt;br/&gt;Sphinx-Needs"]
+flowchart TB
+    FM["Feature model&lt;br/&gt;KConfig"] --> B["Build system&lt;br/&gt;CMake and the IDE"]
+    FM --> S["Source code&lt;br/&gt;production and test"]
+    FM --> D["Documentation&lt;br/&gt;Sphinx-Needs"]
 </pre>
 </div>
 
-- 2024: one feature model drives the build, the IDE and the tests
-- 2025: requirement, design, code, test and result, traced with Sphinx-Needs
-- Open: is every requirement covered in every variant?
+- Since 2023, one feature model configures the build, the code, the tests and the documentation
+- The report of each variant shows its traceability, after the build
+- New: the editor knows the variant and supports you while you write
 
 Note:
 
-(Karsten) Two years ago at the CodeDays, we showed how one feature model drives the build,
-the IDE and the tests of a product line. Last year, our colleagues Michael and Jochen stood
-here and showed the traceability chain from the requirement to the test result, written as
-code and resolved by Sphinx-Needs. The documentation followed the variant too, but only
-through Jinja templates. One question stayed open in both talks: how do I see that every
-requirement is covered in every variant? Today we close that gap.
+(Karsten) Since 2023, one feature model configures our product line. The build system reads
+it, and through the build system the IDE. The production code and the test code read it. And
+the documentation reads it, down to the single Sphinx-Needs object: a requirement, a design
+element or a test exists only in the variants that select it. We showed this at the CodeDays
+2024, and Michael and Jochen showed it here last year, with the traceability from the
+requirement to the test result. The report of every variant shows that traceability. But
+you see it only after the build, in the generated report. While you write, the editor sees a
+template, not a variant. That is what changes this year: with the useblocks tools, the editor
+knows the variant, shows you what belongs to it, and supports you while you write.
 
 --
 
