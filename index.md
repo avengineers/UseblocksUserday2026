@@ -84,7 +84,7 @@ flowchart TB
 </div>
 
 - Since 2023, one feature model configures the build, the code, the tests and the documentation <!-- .element: class="fragment" -->
-- The report of each variant shows its traceability, after the build <!-- .element: class="fragment" -->
+- The report of each variant shows its traceability <!-- .element: class="fragment" -->
 - New: the editor knows the variant and supports you while you write <!-- .element: class="fragment" -->
 
 Note:
