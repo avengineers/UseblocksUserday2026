@@ -101,26 +101,68 @@ knows the variant, shows you what belongs to it, and supports you while you writ
 
 --
 
-### SPLED in one slide
+### SPLED: one code base, three products
 
-<div class="mid-table">
+<div class="lights">
+<div class="fragment">
 
-| Variant | Features | Components on top of the common eleven |
-|---|---|---|
-| Disco | blinking | – |
-| Sleep | manual brightness, auto off after 10 s | `brightness_controller`, `auto_off` |
-| Spa | automatic brightness, every 10 s | `brightness_controller` |
+![The Sleeping Light](images/light_sleep.jpg)
+
+Sleep <!-- .element: class="caption" -->
 
 </div>
+<div class="fragment">
 
-One repository, one feature model, one `config.txt` and one `parts.cmake` per variant.
+![The Disco Light](images/light_disco.jpg)
+
+Disco <!-- .element: class="caption" -->
+
+</div>
+<div class="fragment">
+
+![The Spa Light](images/light_spa.jpg)
+
+Spa <!-- .element: class="caption" -->
+
+</div>
+</div>
+
+One repository, one trunk, three products. <!-- .element: class="fragment" -->
 
 Note:
 
-(Karsten) SPLED is our open-source demonstrator: a product line of lights. Disco blinks.
-Sleep has a brightness knob and switches itself off. Spa adjusts its brightness on its own.
-The `config.txt` of a variant selects the features, and its `parts.cmake` selects the
-components. Everything we show today runs on this repository.
+(Karsten) SPLED is our open-source demonstrator: a product line of lights. The Sleeping Light,
+the Disco Light and the Spa Light. One repository, one trunk, three products. Nobody forked
+anything to get the third one. Everything we show today runs on this repository.
+
+--
+
+### Four features, three products
+
+<div class="mid-table">
+
+| Feature | Sleep | Disco | Spa |
+|---|---|---|---|
+| Blinking | – | yes | – |
+| Brightness adjustment | manual | not available | automatic, every 10 s |
+| Switch off after a while | after 10 s | – | – |
+| Colour | purple | green | purple and green |
+| Extra components | `brightness_controller`, `auto_off` | – | `brightness_controller` |
+
+</div>
+
+No branches: the `config.txt` of a variant selects the features, its `parts.cmake` the
+components. <!-- .element: class="fragment" -->
+
+Note:
+
+(Karsten) Four features separate the three products. Everything else is shared, built once and
+tested once. One cell is interesting: the Disco Light has no brightness adjustment, and that is
+not missing work. The feature model forbids it. Brightness adjustment depends on blinking being
+off, and the tool refuses the combination when you configure the variant. The last row is what
+the build system makes of the features: Sleep and Spa get components on top of the common
+eleven. Philip comes back
+to that row.
 
 --
 
