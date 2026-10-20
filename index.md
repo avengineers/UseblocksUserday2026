@@ -327,7 +327,7 @@ main knob input that sets the blinking rate. No file was changed, and nothing wa
 
 ---
 
-### Production and Test Code
+### Production and Test Code, Traced per Variant
 
 <div class="wide-code">
 
@@ -337,6 +337,8 @@ main knob input that sets the blinking rate. No file was changed, and nothing wa
 #ifdef CONFIG_BLINKING
 // @need Calculate blink period, SWIMPL_LC-004, impl, [SWDD_LC-101], [REQ_44]
 SPLE_TESTABLE_STATIC percentage_t calculateBlinkPeriod(percentage_t mainKnobValue)
+{ ... }
+#endif
 ```
 
 <p class="caption"><code>components/light_controller/test/test_light_controller.cc</code></p>
@@ -352,6 +354,10 @@ SPLE_TESTABLE_STATIC percentage_t calculateBlinkPeriod(percentage_t mainKnobValu
  *
  * @endrst
  */
+TEST(light_controller, test_light_blinking)
+{ ... }
+// ... two more blinking tests
+#endif // CONFIG_BLINKING
 ```
 
 </div>
@@ -364,7 +370,7 @@ implementation, the design element it implements and the requirement it fulfills
 reads the compile database of the build, so this need exists only in the variant that
 compiles this branch: Disco. The test specification sits above its test, under the same
 condition. In Sleep and in Spa, neither the implementation nor the test exists, and neither
-do their needs.
+do their needs. The function bodies and two more blinking tests are left out here.
 
 --
 
