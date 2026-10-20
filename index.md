@@ -327,11 +327,12 @@ main knob input that sets the blinking rate. No file was changed, and nothing wa
 
 ---
 
-### Production and Test Code, Traced per Variant
+### Tracing per Variant
 
 <div class="wide-code">
+<div class="fragment">
 
-<p class="caption"><code>components/light_controller/src/light_controller.c</code></p>
+<p class="caption">Production code: <code>components/light_controller/src/light_controller.c</code></p>
 
 ```c
 #ifdef CONFIG_BLINKING
@@ -341,7 +342,10 @@ SPLE_TESTABLE_STATIC percentage_t calculateBlinkPeriod(percentage_t mainKnobValu
 #endif
 ```
 
-<p class="caption"><code>components/light_controller/test/test_light_controller.cc</code></p>
+</div>
+<div class="fragment">
+
+<p class="caption">Test code: <code>components/light_controller/test/test_light_controller.cc</code></p>
 
 ```cpp
 #if CONFIG_BLINKING
@@ -360,6 +364,7 @@ TEST(light_controller, test_light_blinking)
 #endif // CONFIG_BLINKING
 ```
 
+</div>
 </div>
 
 Note:
