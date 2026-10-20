@@ -99,7 +99,7 @@ template, not a variant.
 
 --
 
-### SPLED: one code base, three products
+### SPLED: Software Product Line Engineering Demonstrator
 
 <div class="lights">
 <div class="fragment">
@@ -129,9 +129,13 @@ One repository, one trunk, three products <!-- .element: class="fragment" -->
 
 Note:
 
-(Karsten) SPLED is our open-source demonstrator: a product line of lights. The Sleeping Light,
-the Disco Light and the Spa Light. One repository, one trunk, three products. Nobody forked
-anything to get the third one. Everything we show today runs on this repository.
+(Karsten) SPLED is our Software Product Line Engineering Demonstrator, and it is open source: a
+product line of lights. The Sleeping Light, the Disco Light and the Spa Light. One repository,
+one trunk, three products. Nobody forked anything to get the third one.
+
+SPLED is more than a demo of how this works. It shows how our software developers work every
+day. And it is the basis for the development of our SPLE Platform: every new feature of the
+platform is tested in SPLED first. Everything we show today runs on this repository.
 
 --
 
