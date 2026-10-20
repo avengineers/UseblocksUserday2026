@@ -169,24 +169,36 @@ to that row.
 
 ### Documents as templates
 
+<div class="wide-code">
+<div class="fragment">
+
+<p class="caption">Detailed design: <code>components/light_controller/doc/index.md</code></p>
+
 ````markdown
 {% if config.BLINKING %}
 
 ```{spec} Blinking Behavior
 :id: SWDD_LC-101
 :refines: SWARCH_001, REQ_44
+
+When the light is ON, it may exhibit a blinking behavior.
+The blinking rate is configurable and is determined based
+on an external input (main knob value).
 ```
 
 {% endif %}
 ````
+
+</div>
+</div>
 
 - The IDE shows only text, no variant. <!-- .element: class="fragment" -->
 - Variant known only to the build <!-- .element: class="fragment" -->
 
 Note:
 
-(Karsten) This is how the light controller's design looked until recently. The Jinja
-condition is resolved before Sphinx parses the page. That works for the HTML report. It does
+(Karsten) This is the design of the light controller as the upstream SPLED repository has it
+today. The Jinja condition is resolved before Sphinx parses the page. That works for the HTML report. It does
 not work for a tool that reads the source as it is, such as an IDE or a language server.
 
 ---
