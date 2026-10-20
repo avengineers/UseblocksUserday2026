@@ -258,7 +258,7 @@ files = ["components/auto_off/**"]
 
 - One rule per component, generated from `parts.cmake` <!-- .element: class="fragment" -->
 - Read by sphinx-mounts and by ubCode <!-- .element: class="fragment" -->
-- Component left out: no page, no needs <!-- .element: class="fragment" -->
+- Component left out: no report, no needs <!-- .element: class="fragment" -->
 
 Note:
 
