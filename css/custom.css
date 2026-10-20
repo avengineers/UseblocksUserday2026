@@ -303,6 +303,20 @@ pre.code-wrapper {
     border-radius: 20px;
 }
 
+/* Listings with long lines, such as source code with its one-line trace comment. */
+.reveal .wide-code pre {
+    width: 100%;
+    font-size: 0.42em;
+    margin-top: 0.1em;
+}
+
+/* The file a listing comes from: small, at the left edge of the listing. */
+.reveal .wide-code .caption {
+    font-size: 0.4em;
+    text-align: left;
+    margin: 0.8em 0 0 0;
+}
+
 /* A short line under a figure or a listing: what it shows, where it comes from. */
 .reveal .caption {
     font-size: 0.6em;

@@ -327,30 +327,44 @@ main knob input that sets the blinking rate. No file was changed, and nothing wa
 
 ---
 
-### Code and tests trace per variant
+### Production and Test Code
+
+<div class="wide-code">
+
+<p class="caption"><code>components/light_controller/src/light_controller.c</code></p>
 
 ```c
-#ifdef CONFIG_BRIGHTNESS_ADJUSTMENT_AUTOMATIC
-    // @need Automatic brightness adjustment in the runnable,
-    //   SWIMPL_BC-004c, impl, [SWDD_BC-203], [REQ_48]
+#ifdef CONFIG_BLINKING
+// @need Calculate blink period, SWIMPL_LC-004, impl, [SWDD_LC-101], [REQ_44]
+SPLE_TESTABLE_STATIC percentage_t calculateBlinkPeriod(percentage_t mainKnobValue)
 ```
+
+<p class="caption"><code>components/light_controller/test/test_light_controller.cc</code></p>
 
 ```cpp
 #if CONFIG_BLINKING
-/** @rst
+/**
+ * @rst
+ *
  * .. test:: light_controller.test_light_blinking
  *    :id: TS_LC-002
  *    :tests: SWDD_LC-101
- * @endrst */
+ *
+ * @endrst
+ */
 ```
+
+</div>
 
 Note:
 
-(Judith) The implementation traces to the design with one comment line. codelinks reads the
-compile database of the build, so this need exists only in the variant that compiles this
-branch: Spa. The test specification sits above the test, under the same condition as the
-test itself. In Sleep and Spa, neither the test nor its specification exists. The comment
-in the source is one line; it is wrapped here only to fit the slide.
+(Judith) Both listings come from the light controller, and both trace to the blinking design
+element from before, SWDD_LC-101. In the production code, one comment line names the
+implementation, the design element it implements and the requirement it fulfills. codelinks
+reads the compile database of the build, so this need exists only in the variant that
+compiles this branch: Disco. The test specification sits above its test, under the same
+condition. In Sleep and in Spa, neither the implementation nor the test exists, and neither
+do their needs.
 
 --
 
