@@ -202,7 +202,7 @@ not work for a tool that reads the source as it is, such as an IDE or a language
 ````
 `````
 
-- The condition: part of the document language <!-- .element: class="fragment" -->
+- The variant as part of the document language <!-- .element: class="fragment" -->
 - Same condition, same data, in Sphinx and ubCode <!-- .element: class="fragment" -->
 - `{variant}`: a value of the variant in the text <!-- .element: class="fragment" -->
 
