@@ -1,6 +1,6 @@
 ## Advanced Variant Management with Sphinx-Needs
 
-The variant in the editor, not only in the report
+The variant in the IDE, not only in the report
 
 <hr>
 
@@ -94,7 +94,7 @@ the documentation reads it, down to the single Sphinx-Needs object: a requiremen
 element or a test exists only in the variants that select it. We showed this at the CodeDays
 2024, and Michael and Jochen showed it here last year, with the traceability from the
 requirement to the test result. The report of every variant shows that traceability. But
-you see it only after the build, in the generated report. While you write, the editor sees a
+you see it only after the build, in the generated report. While you write, the IDE sees a
 template, not a variant.
 
 --
@@ -180,7 +180,7 @@ to that row.
 {% endif %}
 ````
 
-- To the editor: text, not a variant <!-- .element: class="fragment" -->
+- To the IDE: text, not a variant <!-- .element: class="fragment" -->
 - No line mapping to the source <!-- .element: class="fragment" -->
 - Variant known only to the build <!-- .element: class="fragment" -->
 
@@ -188,7 +188,7 @@ Note:
 
 (Karsten) This is how the light controller's design looked until recently. The Jinja
 condition is resolved before Sphinx parses the page. That works for the HTML report. It does
-not work for a tool that reads the source as it is, such as an editor or a language server.
+not work for a tool that reads the source as it is, such as an IDE or a language server.
 And because the template changes the text, the line numbers of the rendered page no longer
 point to the source. For a safety argument, that trace from the evidence back to the source
 matters.
@@ -213,7 +213,7 @@ matters.
 Note:
 
 (Philip) The same specification, without a template. The `{if}` block is a directive of the
-document language, so every reader understands it: the Sphinx build, ubCode in the editor
+document language, so every reader understands it: the Sphinx build, ubCode in the IDE
 and the ubc command line. The condition reads the features of the selected variant. Nothing
 is generated into the text, so the lines stay where they are.
 
@@ -273,7 +273,7 @@ name of the variant. So a new variant needs no change in any document.
 
 --
 
-### The editor knows the variant
+### The IDE knows the variant
 
 <div class="flex-container">
 <div class="half">
@@ -300,7 +300,7 @@ Note:
 
 (Philip) The same design document in ubCode, once with Disco selected and once with Sleep.
 You select the variant with a VS Code task. ubCode fades the blocks whose condition is false,
-the way a C editor fades code under a false `#if`. The preview shows them folded, labelled
+the way the IDE fades C code under a false `#if`. The preview shows them folded, labelled
 with their condition, and the needs inside them are not in the index, exactly as in the
 Sphinx build. A document of a component that the variant does not have is reported as
 information, with the rule that removed it. You see all of this while you write, before any
