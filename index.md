@@ -180,8 +180,7 @@ to that row.
 {% endif %}
 ````
 
-- To the IDE: text, not a variant <!-- .element: class="fragment" -->
-- No line mapping to the source <!-- .element: class="fragment" -->
+- The IDE shows only text, no variant. <!-- .element: class="fragment" -->
 - Variant known only to the build <!-- .element: class="fragment" -->
 
 Note:
@@ -189,9 +188,6 @@ Note:
 (Karsten) This is how the light controller's design looked until recently. The Jinja
 condition is resolved before Sphinx parses the page. That works for the HTML report. It does
 not work for a tool that reads the source as it is, such as an IDE or a language server.
-And because the template changes the text, the line numbers of the rendered page no longer
-point to the source. For a safety argument, that trace from the evidence back to the source
-matters.
 
 ---
 
