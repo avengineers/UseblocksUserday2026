@@ -535,18 +535,20 @@ disagrees anywhere else, the change does not merge.
 
 ### Why we want it
 
-- The variant visible while you write <!-- .element: class="fragment" -->
-- Editor and report: the same answer <!-- .element: class="fragment" -->
-- Every variant checked without a compiler <!-- .element: class="fragment" -->
+- In the IDE: the traces of the selected variant, fast <!-- .element: class="fragment" -->
+- In the report: the same result as in the IDE <!-- .element: class="fragment" -->
+- So ubc as an alternative to sphinx-build <!-- .element: class="fragment" -->
 
 Note:
 
-(Karsten) You saw what Philip changed. Why do we want it? Today, a developer sees the variant
-only in the report, after the build. With the variant in the document language, the editor
-shows it while they write, and it shows the same as the report. A question like "what if
-this feature is off?" gets an answer in seconds, without a build. And the documents need no
-compiler any more: when the documentation gate came into the useblocks repository, it
-checked all five variants of SPLED with 14 tests in 14 seconds.
+(Karsten) You saw what Philip changed. Why do we want it? There are two readers, and we want
+something from each of them. In the IDE, a developer works on one variant and wants its
+traces right away: which design element a function implements, which test covers it, and
+what is missing. ubCode gives that for the selected variant while they write, without a
+build. In the report, we want the same result as in the IDE. If the IDE and the report
+disagree, nobody trusts either of them. That is why we consider ubc as an alternative to
+sphinx-build: it reads the same files and the same configuration as ubCode. If it is faster
+as well, so much the better.
 
 --
 
