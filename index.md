@@ -536,8 +536,8 @@ disagrees anywhere else, the change does not merge.
 ### Why we want it
 
 - Today: no traces in the IDE, only in the Sphinx report <!-- .element: class="fragment" -->
-- Every check needs a build of the report <!-- .element: class="fragment" -->
-- Errors easily overlooked in an HTML report <!-- .element: class="fragment" -->
+- Every check needs a build <!-- .element: class="fragment" -->
+- Errors easily overlooked <!-- .element: class="fragment" -->
 - Expected gain: correctness, maintainability, usability <!-- .element: class="fragment" -->
 
 Note:
