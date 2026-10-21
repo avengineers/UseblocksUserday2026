@@ -487,14 +487,14 @@ name of the variant. So a new variant needs no change in any document.
 <div class="flex-container">
 <div class="half">
 
-![ubCode with Disco selected](images/screenshot_placeholder.svg)
+![ubCode with Disco selected](images/spled_variant_comparison_disco.png)
 
 Disco <!-- .element: class="caption" -->
 
 </div>
 <div class="half">
 
-![ubCode with Sleep selected](images/screenshot_placeholder.svg)
+![ubCode with Sleep selected](images/spled_variant_comparison_sleep.png)
 
 Sleep <!-- .element: class="caption" -->
 
