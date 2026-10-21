@@ -289,6 +289,12 @@ pre.code-wrapper {
     max-height: 600px;
 }
 
+/* The title slide of a chapter: its name, and its speaker below it. */
+.reveal .chapter-speaker {
+    font-size: 0.8em;
+    color: #13DAEC;
+}
+
 /* The three lights of SPLED, side by side. */
 .reveal .lights {
     display: flex;

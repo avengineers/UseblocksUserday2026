@@ -56,10 +56,10 @@ Each speaker says who they are in one or two sentences.
 
 | Chapter | Speaker |
 |---|---|
-| SPLED and engineering as code | Karsten |
-| Variants and traceability | Judith |
-| The same in ubCode | Philip |
-| Why we want it, and how to adopt it | Karsten |
+| SPLED and Engineering as Code | Karsten |
+| Variants and Traceability | Judith |
+| The Same in ubCode | Philip |
+| Why We Want It, and How to Adopt It | Karsten |
 
 </div>
 
@@ -71,6 +71,17 @@ trace per variant. Philip shows what changes to see all of this in ubCode. I clo
 we want it, and what it takes to adopt it.
 
 ---
+
+## SPLED and Engineering as Code
+
+Karsten <!-- .element: class="chapter-speaker" -->
+
+Note:
+
+(Karsten) First, where we left off: SPLED, its feature model, and our idea of engineering
+as code.
+
+--
 
 ### Where We Left Off
 
@@ -191,6 +202,16 @@ that somebody has to notice. The build reads these links for one variant at a ti
 the report of that variant. Nobody assembles this report by hand.
 
 ---
+
+## Variants and Traceability
+
+Judith <!-- .element: class="chapter-speaker" -->
+
+Note:
+
+(Judith) I show how the variant lives in our documents, and how we trace per variant.
+
+--
 
 ### One Feature, Every Layer
 
@@ -338,6 +359,16 @@ because Sleep does not select blinking. Today the reader has to know this. The i
 requirement already carries the name of its feature, but the matrix does not use it yet.
 
 ---
+
+## The Same in ubCode
+
+Philip <!-- .element: class="chapter-speaker" -->
+
+Note:
+
+(Philip) I show what changes, so that you see all of this in ubCode.
+
+--
 
 ### Documents as Templates
 
@@ -532,6 +563,16 @@ the needs one by one. Every allowed difference is written down in one file. If a
 disagrees anywhere else, the change does not merge.
 
 ---
+
+## Why We Want It, and How to Adopt It
+
+Karsten <!-- .element: class="chapter-speaker" -->
+
+Note:
+
+(Karsten) Last: why we want it, and what it takes to adopt it.
+
+--
 
 ### Why We Want It
 
