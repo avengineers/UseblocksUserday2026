@@ -547,7 +547,9 @@ report. Sphinx builds the component report or the variant report, and the IDE sh
 it. So the developer has to run the build to check the traces, and then read an HTML report.
 In a report of many pages, a missing or a wrong link is easy to overlook. With ubCode, the
 traces of the selected variant are visible in the IDE while the developer writes, and an error
-shows where it is made. ubc builds the report from the same files. We expect the useblocks
+shows where it is made. A link to an ID that does not exist is marked without any configuration.
+A missing link needs a rule: with a schema, ubCode shows it while you write, and the build
+reports it too. ubc builds the report from the same files. We expect the useblocks
 tooling to raise the quality of what we deliver: its correctness, its maintainability, and its
 usability for the developer.
 
@@ -571,6 +573,7 @@ usability for the developer.
 - Upstream takeover <!-- .element: class="fragment" -->
 - Variant selection in the IDE <!-- .element: class="fragment" -->
 - Variation points inside diagrams <!-- .element: class="fragment" -->
+- Traceability rules as a schema <!-- .element: class="fragment" -->
 
 </div>
 </div>
@@ -581,7 +584,8 @@ Note:
 `ubproject.toml`, because ubCode does not run `conf.py`. And the documents stop using Jinja;
 the conversion is mechanical. What comes next: the upstream repositories take over the
 changes, the developer selects the variant in the IDE, where they already select it for the
-build, and diagrams get their own variation points.
+build, diagrams get their own variation points, and the traceability rules become a schema,
+so that a missing link is an error.
 
 --
 
