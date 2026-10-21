@@ -535,20 +535,21 @@ disagrees anywhere else, the change does not merge.
 
 ### Why we want it
 
-- In the IDE: the traces of the selected variant, fast <!-- .element: class="fragment" -->
-- In the report: the same result as in the IDE <!-- .element: class="fragment" -->
-- So ubc as an alternative to sphinx-build <!-- .element: class="fragment" -->
+- Today: no traces in the IDE, only in the Sphinx report <!-- .element: class="fragment" -->
+- Every check needs a build of the report <!-- .element: class="fragment" -->
+- Errors easily overlooked in an HTML report <!-- .element: class="fragment" -->
+- Expected gain: correctness, maintainability, usability <!-- .element: class="fragment" -->
 
 Note:
 
-(Karsten) You saw what Philip changed. Why do we want it? There are two readers, and we want
-something from each of them. In the IDE, a developer works on one variant and wants its
-traces right away: which design element a function implements, which test covers it, and
-what is missing. ubCode gives that for the selected variant while they write, without a
-build. In the report, we want the same result as in the IDE. If the IDE and the report
-disagree, nobody trusts either of them. That is why we consider ubc as an alternative to
-sphinx-build: it reads the same files and the same configuration as ubCode. If it is faster
-as well, so much the better.
+(Karsten) Why do we want the useblocks tooling? Today, a developer sees the traces only in a
+report. Sphinx builds the component report or the variant report, and the IDE shows nothing of
+it. So the developer has to run the build to check the traces, and then read an HTML report.
+In a report of many pages, a missing or a wrong link is easy to overlook. With ubCode, the
+traces of the selected variant are visible in the IDE while the developer writes, and an error
+shows where it is made. ubc builds the report from the same files. We expect the useblocks
+tooling to raise the quality of what we deliver: its correctness, its maintainability, and its
+usability for the developer.
 
 --
 
