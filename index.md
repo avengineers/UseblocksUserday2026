@@ -56,19 +56,19 @@ Each speaker says who they are in one or two sentences.
 
 | Chapter | Speaker |
 |---|---|
-| The gap: only the build knows the variant | Karsten |
-| Declarative variants | Philip |
-| Traceability per variant | Judith |
-| Adopt it | Karsten |
+| SPLED and engineering as code | Karsten |
+| Variants and traceability | Judith |
+| The same in ubCode | Philip |
+| Why we want it, and how to adopt it | Karsten |
 
 </div>
 
 Note:
 
-(Karsten) Four parts. I start with where we left off, and with the gap: only the build knows
-the variant.
-Philip shows how the documents select their content per variant without templates. Judith
-shows what that means for the traceability. I close with what it takes to adopt it.
+(Karsten) Four parts. I start with where we left off: SPLED, its feature model and our idea
+of engineering as code. Judith shows how the variant lives in our documents, and how we
+trace per variant. Philip shows what changes to see all of this in ubCode. I close with why
+we want it, and what it takes to adopt it.
 
 ---
 
@@ -93,9 +93,7 @@ it, and through the build system the IDE. The production code and the test code 
 the documentation reads it, down to the single Sphinx-Needs object: a requirement, a design
 element or a test exists only in the variants that select it. We showed this at the CodeDays
 2024, and Michael and Jochen showed it here last year, with the traceability from the
-requirement to the test result. The report of every variant shows that traceability. But
-you see it only after the build, in the generated report. While you write, the IDE sees a
-template, not a variant.
+requirement to the test result. The report of every variant shows that traceability.
 
 --
 
@@ -167,6 +165,180 @@ to that row.
 
 --
 
+### Engineering as Code
+
+<div class="mermaid">
+<pre>
+flowchart LR
+    R["One repository&lt;br/&gt;requirements, design,&lt;br/&gt;code and tests"] --> B["Build of&lt;br/&gt;one variant"]
+    FM["Feature model"] --> B
+    B --> P["Report of the variant&lt;br/&gt;with its traceability"]
+</pre>
+</div>
+
+- Requirements, design and tests as text, next to the code <!-- .element: class="fragment" -->
+- Each artifact names what it refines, implements or tests <!-- .element: class="fragment" -->
+- The build resolves the links, one variant at a time <!-- .element: class="fragment" -->
+
+Note:
+
+(Karsten) Engineering as code means that our engineering artifacts live where the code lives.
+The requirements, the architecture, the design and the tests are text files in one
+repository. Each artifact has an ID and names what it depends on: a design element names the
+requirement it refines, an implementation names the design element it implements, and a test
+names the design element it tests. So a link is data that a tool can read, not a sentence
+that somebody has to notice. The build reads these links for one variant at a time and writes
+the report of that variant. Nobody assembles this report by hand.
+
+---
+
+### One feature, every layer
+
+<div class="mid-table">
+
+| Layer | Condition | Need |
+|---|---|---|
+| Feature model | `config BLINKING` | – |
+| Variant Disco | `CONFIG_BLINKING=y` | – |
+| Design | `{% if config.BLINKING %}` | SWDD_LC-101 |
+| Code | `#ifdef CONFIG_BLINKING` | SWIMPL_LC-004 |
+| Test | `#if CONFIG_BLINKING` | TS_LC-002 |
+
+</div>
+
+- Same name in every layer <!-- .element: class="fragment" -->
+- Set once, in the `config.txt` of the variant <!-- .element: class="fragment" -->
+
+Note:
+
+(Judith) Let us follow one feature through all layers: blinking. The feature model in
+`KConfig` declares it. The `config.txt` of Disco selects it; Sleep and Spa do not. The design
+of the light controller, in `components/light_controller/doc/index.md`, puts the blinking
+behavior SWDD_LC-101 under the same condition. So does the production code in
+`light_controller.c` with the implementation SWIMPL_LC-004, and the test code in
+`test_light_controller.cc` with the test specification TS_LC-002. It is the same name in every
+layer, and the variant sets it in one place.
+
+--
+
+### Links in code and tests
+
+<div class="wide-code">
+<div class="fragment">
+
+<p class="caption">Production code: <code>components/light_controller/src/light_controller.c</code></p>
+
+```c
+#ifdef CONFIG_BLINKING
+/**
+ * @rst
+ * .. impl:: Calculate blink period
+ *    :id: SWIMPL_LC-004
+ *    :implements: SWDD_LC-101
+ *    :fulfills: REQ_44
+ * @endrst
+ */
+SPLE_TESTABLE_STATIC percentage_t calculateBlinkPeriod(percentage_t mainKnobValue)
+{ ... }
+#endif
+```
+
+</div>
+<div class="fragment">
+
+<p class="caption">Test code: <code>components/light_controller/test/test_light_controller.cc</code></p>
+
+```cpp
+#if CONFIG_BLINKING
+/**
+ * @rst
+ * .. test:: light_controller.test_light_blinking
+ *    :id: TS_LC-002
+ *    :tests: SWDD_LC-101
+ * @endrst
+ */
+TEST(light_controller, test_light_blinking)
+{ ... }
+// ... two more blinking tests
+#endif // CONFIG_BLINKING
+```
+
+</div>
+</div>
+
+Note:
+
+(Judith) This is how the links look in the code. Above the function, a comment block names
+the implementation SWIMPL_LC-004, the design element it implements and the requirement it
+fulfills. Above the test, the test specification TS_LC-002 names the design element it tests.
+Both sit inside the blinking condition. clanguru reads the sources with the compile database
+of the variant, so these needs exist only in the variant that compiles this branch: Disco. The
+result of the test is linked to its specification by the name of the test case. Both listings
+come from our SPLED repository. The function body and two more blinking tests are left out
+here.
+
+--
+
+### Two variants, two reports
+
+<div class="figure">
+
+![The design of the light controller in the reports of Disco and Sleep](images/spled_variant_comparison.png)
+
+</div>
+
+- Not selected: not in the report <!-- .element: class="fragment" -->
+- Nothing marked "not applicable" by hand <!-- .element: class="fragment" -->
+
+Note:
+
+(Judith) This is the design of the light controller, once in the report of Disco and once in
+the report of Sleep. Both show the state management, with the same links. Only Disco shows the
+blinking behavior, with its implementation and its three tests. In Sleep, the blinking
+behavior does not exist. Nobody deleted it, and nobody marked it as not applicable. The report
+of Sleep does not contain what Sleep does not have.
+
+--
+
+### What it gives us
+
+- One source, no document per variant <!-- .element: class="fragment" -->
+- One feature name, from the feature model to the test <!-- .element: class="fragment" -->
+- Evidence from the build, before the push <!-- .element: class="fragment" -->
+- Requirement, design and test in one pull request <!-- .element: class="fragment" -->
+
+Note:
+
+(Judith) What does this give us? We write each document once, for all variants, and still get
+a correct report for each variant. The feature has one name, from the feature model to the
+test, so the documents and the code cannot drift apart. The evidence comes out of the build. A
+developer builds the report of a variant on their own machine, before they push. And when a
+requirement changes, the reviewer sees in the same pull request whether the design and the
+tests changed with it.
+
+--
+
+### The matrix of Sleep
+
+<div class="figure">
+
+![The traceability matrix in the report of Sleep, shortened](images/spled_traceability_matrix.png)
+
+</div>
+
+- Made by the build, for each variant <!-- .element: class="fragment" -->
+- REQ_44 empty: Sleep does not blink <!-- .element: class="fragment" -->
+
+Note:
+
+(Judith) Every variant report has a traceability matrix. For each requirement, it shows the
+design elements that refine it and the implementations that fulfill it. This is the matrix of
+Sleep, shortened. REQ_44 is the blinking behavior, and its row is empty. That is correct,
+because Sleep does not select blinking. Today the reader has to know this. The imported
+requirement already carries the name of its feature, but the matrix does not use it yet.
+
+---
+
 ### Documents as templates
 
 <div class="wide-code">
@@ -197,11 +369,12 @@ on an external input (main knob value).
 
 Note:
 
-(Karsten) This is the design of the light controller as the upstream SPLED repository has it
-today. The Jinja condition is resolved before Sphinx parses the page. That works for the HTML report. It does
-not work for a tool that reads the source as it is, such as an IDE or a language server.
+(Philip) This is the design that Judith just showed, as our SPLED repository has it today.
+The Jinja condition is resolved before Sphinx parses the page. That works for the HTML report.
+It does not work for a tool that reads the source as it is, such as an IDE or a language
+server. While you write, the IDE sees a template, not a variant.
 
----
+--
 
 ### Declarative instead
 
@@ -337,109 +510,6 @@ Note:
 needs twice and prints the difference. Two needs go away: the blinking behavior, and the
 main knob input that sets the blinking rate. No file was changed, and nothing was compiled.
 
----
-
-### Tracing per Variant
-
-<div class="wide-code">
-<div class="fragment">
-
-<p class="caption">Production code: <code>components/light_controller/src/light_controller.c</code></p>
-
-```c
-#ifdef CONFIG_BLINKING
-// @need Calculate blink period, SWIMPL_LC-004, impl, [SWDD_LC-101], [REQ_44]
-SPLE_TESTABLE_STATIC percentage_t calculateBlinkPeriod(percentage_t mainKnobValue)
-{ ... }
-#endif
-```
-
-</div>
-<div class="fragment">
-
-<p class="caption">Test code: <code>components/light_controller/test/test_light_controller.cc</code></p>
-
-```cpp
-#if CONFIG_BLINKING
-/**
- * @rst
- *
- * .. test:: light_controller.test_light_blinking
- *    :id: TS_LC-002
- *    :tests: SWDD_LC-101
- *
- * @endrst
- */
-TEST(light_controller, test_light_blinking)
-{ ... }
-// ... two more blinking tests
-#endif // CONFIG_BLINKING
-```
-
-</div>
-</div>
-
-Note:
-
-(Judith) Both listings come from the light controller, and both trace to the blinking design
-element from before, SWDD_LC-101. In the production code, one comment line names the
-implementation, the design element it implements and the requirement it fulfills. codelinks
-reads the compile database of the build, so this need exists only in the variant that
-compiles this branch: Disco. The test specification sits above its test, under the same
-condition. In Sleep and in Spa, neither the implementation nor the test exists, and neither
-do their needs. The function bodies and two more blinking tests are left out here.
-
---
-
-### Test results are needs
-
-```cmake
-set(SPL_TEST_RESULTS_AS_NEEDS ON)
-```
-
-- One need per GoogleTest case, from JUnit XML <!-- .element: class="fragment" -->
-- Test specification linked to its results <!-- .element: class="fragment" -->
-- `cmake --build build/Disco/test/Debug --target components_light_controller_report` <!-- .element: class="fragment" -->
-
-Note:
-
-(Judith) One switch in the CMake file, and the results of the unit tests become needs. Each
-test specification links to its results. The developer builds the report of one
-component on their own machine, before they push. That is shift-left: the evidence exists
-before the review starts.
-
---
-
-### Gaps while you write
-
-```json
-{
-  "id": "impl-implements-spec",
-  "severity": "violation",
-  "message": "Each implementation must implement a spec.",
-  "select": {"properties": {"type": {"const": "impl"}}},
-  "validate": {"local": {
-    "required": ["implements"],
-    "properties": {"implements": {"type": "array", "minItems": 1}}
-  }}
-}
-```
-
-A proposed rule for SPLED, in the schema format of Sphinx-Needs <!-- .element: class="caption" -->
-
-- Gap marked in ubCode, while you write <!-- .element: class="fragment" -->
-- Same violation in the Sphinx build: CI stops <!-- .element: class="fragment" -->
-- The matrix stays in the report <!-- .element: class="fragment" -->
-
-Note:
-
-(Judith) The traceability matrix of each variant has been in the report since last year. It
-tells you after the build that a link is missing. A schema tells you while you write. This
-rule says that every implementation implements at least one design element. Write an
-`@need` comment without a design element, and ubCode marks the line at once. The Sphinx
-build reports the same violation, so CI stops before the gap is merged. The rule is not yet
-in SPLED. It is the next step, and it uses the schema format that Sphinx-Needs already has.
-
 --
 
 ### Two readers, one answer
@@ -456,12 +526,29 @@ for each variant, kit and target:
 
 Note:
 
-(Judith) Two readers of the same documents must give the same answer. CI builds every
+(Philip) Two readers of the same documents must give the same answer. CI builds every
 variant, every kit and every target twice: once with Sphinx, once with ubc. Then it compares
 the needs one by one. Every allowed difference is written down in one file. If a reader
 disagrees anywhere else, the change does not merge.
 
 ---
+
+### Why we want it
+
+- The variant visible while you write <!-- .element: class="fragment" -->
+- Editor and report: the same answer <!-- .element: class="fragment" -->
+- Every variant checked without a compiler <!-- .element: class="fragment" -->
+
+Note:
+
+(Karsten) You saw what Philip changed. Why do we want it? Today, a developer sees the variant
+only in the report, after the build. With the variant in the document language, the editor
+shows it while they write, and it shows the same as the report. A question like "what if
+this feature is off?" gets an answer in seconds, without a build. And the documents need no
+compiler any more: when the documentation gate came into the useblocks repository, it
+checked all five variants of SPLED with 14 tests in 14 seconds.
+
+--
 
 ### Adopt it, and what's next
 
@@ -531,5 +618,6 @@ https://avengineers.github.io/UseblocksUserday2026/ <!-- .element: class="deck-u
 ### Some Links
 
 - [We@GitHub](https://github.com/avengineers)
-- [SPLED, the demo of this talk](https://github.com/useblocks/SPLed)
+- [SPLED, our original](https://github.com/avengineers/SPLed)
+- [SPLED with ubCode, by useblocks](https://github.com/useblocks/SPLed)
 - [Printable Slides](https://avengineers.github.io/UseblocksUserday2026/?print-pdf)

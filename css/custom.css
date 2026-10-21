@@ -323,6 +323,12 @@ pre.code-wrapper {
     margin: 0.2em 0;
 }
 
+/* A screenshot of a report, with room for the title and two bullets below it. */
+.reveal .figure img {
+    max-height: 380px;
+    margin: 0;
+}
+
 /* A table that must stay readable from the back of the room: larger than
  * .small-table, smaller than the body text. */
 .reveal .mid-table {
