@@ -18,7 +18,7 @@ Welcome the audience. Say the title of the talk.
 
 ---
 
-### Who are we?
+### Who Are We?
 
 <div class="speakers">
 <div class="speaker">
@@ -72,7 +72,7 @@ we want it, and what it takes to adopt it.
 
 ---
 
-### Where we left off
+### Where We Left Off
 
 <div class="mermaid">
 <pre>
@@ -137,7 +137,7 @@ platform is tested in SPLED first. Everything we show today runs on this reposit
 
 --
 
-### Four features, three products
+### Four Features, Three Products
 
 <div class="mid-table">
 
@@ -192,7 +192,7 @@ the report of that variant. Nobody assembles this report by hand.
 
 ---
 
-### One feature, every layer
+### One Feature, Every Layer
 
 <div class="mid-table">
 
@@ -221,7 +221,7 @@ layer, and the variant sets it in one place.
 
 --
 
-### Links in code and tests
+### Links in Code and Tests
 
 <div class="wide-code">
 <div class="fragment">
@@ -279,7 +279,7 @@ here.
 
 --
 
-### Two variants, two reports
+### Two Variants, Two Reports
 
 <div class="figure">
 
@@ -300,7 +300,7 @@ of Sleep does not contain what Sleep does not have.
 
 --
 
-### What it gives us
+### What It Gives Us
 
 - One source, no document per variant <!-- .element: class="fragment" -->
 - One feature name, from the feature model to the test <!-- .element: class="fragment" -->
@@ -318,7 +318,7 @@ tests changed with it.
 
 --
 
-### The matrix of Sleep
+### The Matrix of Sleep
 
 <div class="figure">
 
@@ -339,7 +339,7 @@ requirement already carries the name of its feature, but the matrix does not use
 
 ---
 
-### Documents as templates
+### Documents as Templates
 
 <div class="wide-code">
 <div class="fragment">
@@ -376,7 +376,7 @@ server. While you write, the IDE sees a template, not a variant.
 
 --
 
-### Declarative instead
+### Declarative Instead
 
 `````markdown
 ````{if} var.features.BLINKING
@@ -400,7 +400,7 @@ is generated into the text, so the lines stay where they are.
 
 --
 
-### The variant as data
+### The Variant as Data
 
 ```json
 {
@@ -432,7 +432,7 @@ every reader follows it.
 
 --
 
-### Whole components in or out
+### Whole Components In or Out
 
 ```toml
 # components/auto_off (generated, shortened)
@@ -454,7 +454,7 @@ name of the variant. So a new variant needs no change in any document.
 
 --
 
-### The IDE knows the variant
+### The IDE Knows the Variant
 
 <div class="flex-container">
 <div class="half">
@@ -489,7 +489,7 @@ build.
 
 --
 
-### What if?
+### What If?
 
 ```text
 > ubc diff -c "needs.variant_data.features.BLINKING = false"
@@ -512,7 +512,7 @@ main knob input that sets the blinking rate. No file was changed, and nothing wa
 
 --
 
-### Two readers, one answer
+### Two Readers, One Answer
 
 ```text
 for each variant, kit and target:
@@ -533,7 +533,7 @@ disagrees anywhere else, the change does not merge.
 
 ---
 
-### Why we want it
+### Why We Want It
 
 - Today: no traces in the IDE, only in the Sphinx report <!-- .element: class="fragment" -->
 - Every check needs a build <!-- .element: class="fragment" -->
@@ -555,7 +555,7 @@ usability for the developer.
 
 --
 
-### Adopt it, and what's next
+### Adopt It, and What's Next
 
 <div class="flex-container">
 <div class="half">
@@ -589,7 +589,7 @@ so that a missing link is an error.
 
 --
 
-### Try it
+### Try It
 
 ```bash
 git clone https://github.com/useblocks/SPLed

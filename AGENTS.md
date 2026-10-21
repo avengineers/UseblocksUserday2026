@@ -72,6 +72,9 @@ speaker, so the speaker changes only between two columns.
 - Start a chapter with a content slide, not with an empty chapter-title slide.
 - Put a slide that can be cut last in its column. A speaker who runs out of time presses
   Right and skips the rest of the column.
+- Write a slide heading in title case, as a section heading of a document: capitalize each
+  major word, and keep articles, short conjunctions and short prepositions in lower case,
+  except as the first or the last word. Example: "Whole Components In or Out".
 - Write a bullet as a short phrase, not as a sentence. A phrase has no full stop. Where a line
   on a slide is a full sentence, it ends with a full stop. The speaker notes are full sentences.
 - Do not announce what is new before the chapter that shows it.
@@ -85,7 +88,7 @@ speaker, so the speaker changes only between two columns.
 
 ## The common slides
 
-The deck starts with the title slide and "Who are we?". It ends with "Questions?" and
+The deck starts with the title slide and "Who Are We?". It ends with "Questions?" and
 "Some Links".
 
 - Change their look in `css/custom.css`, section "The common slides". Do not change it with
