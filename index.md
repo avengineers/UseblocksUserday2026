@@ -561,30 +561,27 @@ usability for the developer.
 **Mandatory**
 
 - `ubproject.toml` with the needs model <!-- .element: class="fragment" -->
-- No Jinja: variant data, `{if}`, generated rules <!-- .element: class="fragment" -->
-- spl-core with the new opt-in settings <!-- .element: class="fragment" -->
+- Removal of Jinja usage <!-- .element: class="fragment" -->
 
 </div>
 <div class="half">
 
 **Next**
 
-- Upstream into spl-core and SPLED <!-- .element: class="fragment" -->
-- Select the variant through CMake Tools <!-- .element: class="fragment" -->
+- Upstream takeover <!-- .element: class="fragment" -->
+- Variant selection in the IDE <!-- .element: class="fragment" -->
 - Variation points inside diagrams <!-- .element: class="fragment" -->
-- A schema rule as a gate <!-- .element: class="fragment" -->
 
 </div>
 </div>
 
 Note:
 
-(Karsten) Three changes are mandatory. A project describes its needs model in
-`ubproject.toml`, because ubCode does not run `conf.py`. The documents drop Jinja for the
-`{if}` directive. And spl-core gets the new opt-in settings; that pull request is open. The
-conversion of the documents is mechanical. What comes next: the changes go upstream, the
-developer selects the variant where they already do it in VS Code, diagrams get their own
-variation points, and the schema rule becomes a gate.
+(Karsten) Two changes are mandatory. A project describes its needs model in
+`ubproject.toml`, because ubCode does not run `conf.py`. And the documents stop using Jinja;
+the conversion is mechanical. What comes next: the upstream repositories take over the
+changes, the developer selects the variant in the IDE, where they already select it for the
+build, and diagrams get their own variation points.
 
 --
 
