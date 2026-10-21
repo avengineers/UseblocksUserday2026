@@ -70,7 +70,7 @@ vertical separator `--` adds a slide below it. The "Agenda" slide names each cha
 speaker, so the speaker changes only between two columns.
 
 - Start each chapter with a title slide: the chapter name as a `##` heading, the same as in the
-  agenda, and the speaker below it.
+  agenda. The agenda names the speakers; the chapter slide does not.
 - Put a slide that can be cut last in its column. A speaker who runs out of time presses
   Right and skips the rest of the column.
 - Write a slide heading in title case, as a section heading of a document: capitalize each

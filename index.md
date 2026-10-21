@@ -23,23 +23,23 @@ Welcome the audience. Say the title of the talk.
 <div class="speakers">
 <div class="speaker">
 
-![Judith](images/judith.png)
+![Judith Reichwein](images/judith.png)
 
-[Judith](https://www.linkedin.com/in/judith-reichwein-873665258/)
-
-</div>
-<div class="speaker">
-
-![Karsten](images/karsten.png)
-
-[Karsten](https://www.linkedin.com/in/karnangue/)
+[Judith Reichwein](https://www.linkedin.com/in/judith-reichwein-873665258/)
 
 </div>
 <div class="speaker">
 
-![Philip](images/speaker_placeholder.svg)
+![Karsten Günther](images/karsten.png)
 
-Philip
+[Karsten Günther](https://www.linkedin.com/in/karnangue/)
+
+</div>
+<div class="speaker">
+
+![Philip Partsch](images/philip.jpg)
+
+[Philip Partsch](https://www.linkedin.com/in/philip-partsch-427921225/)
 
 </div>
 </div>
@@ -74,7 +74,6 @@ we want it, and what it takes to adopt it.
 
 ## SPLED and Engineering as Code
 
-Karsten <!-- .element: class="chapter-speaker" -->
 
 Note:
 
@@ -205,7 +204,6 @@ the report of that variant. Nobody assembles this report by hand.
 
 ## Variants and Traceability
 
-Judith <!-- .element: class="chapter-speaker" -->
 
 Note:
 
@@ -362,7 +360,6 @@ requirement already carries the name of its feature, but the matrix does not use
 
 ## The Same in ubCode
 
-Philip <!-- .element: class="chapter-speaker" -->
 
 Note:
 
@@ -566,7 +563,6 @@ disagrees anywhere else, the change does not merge.
 
 ## Why We Want It, and How to Adopt It
 
-Karsten <!-- .element: class="chapter-speaker" -->
 
 Note:
 
