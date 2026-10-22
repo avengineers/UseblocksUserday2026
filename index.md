@@ -484,17 +484,17 @@ name of the variant. So a new variant needs no change in any document.
 
 ### The IDE Knows the Variant
 
-<div class="flex-container">
+<div class="flex-container screenshot-pair">
 <div class="half">
 
-![ubCode with Disco selected](images/spled_variant_comparison_disco.png)
+![ubCode with Disco selected](images/spled_variant_comparison_disco.png) <!-- .element: data-preview-image data-preview-fit="contain" -->
 
 Disco <!-- .element: class="caption" -->
 
 </div>
 <div class="half">
 
-![ubCode with Sleep selected](images/spled_variant_comparison_sleep.png)
+![ubCode with Sleep selected](images/spled_variant_comparison_sleep.png) <!-- .element: data-preview-image data-preview-fit="contain" -->
 
 Sleep <!-- .element: class="caption" -->
 
